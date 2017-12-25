@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title></title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+	<meta charset="utf-8">
+	<style type="text/css">
+
+		#playcontrols {
+			text-align: center;
+			margin-top: 50px;
+		}
+		#playcontrols #activityindicator, #playcontrols #stopbutton {
+			display: none;
+		}
+
+		#textpositiondiv {
+			margin-top: 100px;
+		}
+
+	</style>
+
+  <script type="text/javascript" src="cordova.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+  <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+  <script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
+  <script src="js/jquery.rss.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/index.js"></script>
+  </head>
+  <body>
+
+  <!--  <ons-navigator swipeable id="myNavigator" page="home.html"></ons-navigator> -->
+    <ons-navigator id="myNavigator" swipeable swipe-target-width="80px">
+      <ons-page>
+        <ons-splitter id="appSplitter">
+          <ons-splitter-side id="sidemenu" page="sidemenu.html" side="left" collapse swipeable width="220px"></ons-splitter-side>
+          <ons-splitter-content page="tabbar.html"></ons-splitter-content>
+        </ons-splitter>
+      </ons-page>
+    </ons-navigator>
+
+    <template id="home.html">
+      <ons-page id="home" title="Yugam Radio">
+        <!-- Home Page Contents -->
+        <div id="playcontrols">
+    		  <a href="#" id="playbutton" onClick="html5audio.play();return false;"><img src="img/playbutton.png" /></a>
+    		  <a href="#" id="activityindicator" onClick="html5audio.stop();return false;"><img src="img/activityindicator.gif" /></a>
+    		  <a href="#" id="stopbutton" onClick="html5audio.stop();return false;"><img src="img/stopbutton.png" /></a>
+  	    </div>
+        <div id="songInfoDiv">Current Song: <span id="songTitle"></span></div>
+        <div id="singerInfoDiv">Artist: <span id="singerInfo"></span></div>
+    	  <div id="textpositiondiv">Time played: <span id="textposition">stopped</span></div>
+        <!-- End Home Page Contents -->
+        <ons-button id="push-button">Push page</ons-button>
+      </ons-page>
+    </template>
+
+    <template id="shows.html">
+      <ons-page id="shows" title="Shows">
+        <ons-toolbar>
+          <div class="center">Yugam Radio Schedule</div>
+        </ons-toolbar>
+        <ons-list id="rss-feeds">
+          <ons-list-header>Default</ons-list-header>
+          <ons-list-item>Item A</ons-list-item>
+          <ons-list-item>Item B</ons-list-item>
+
+        </ons-list>
+      </ons-page>
+    </template>
+
+    <template id="news.html">
+      <ons-page id="news">
+        <p>This is the news page.</p>
+      </ons-page>
+    </template>
+
+    <template id="tabbar.html">
+      <ons-page id="tabbar-page">
+        <ons-toolbar>
+          <div id="toolbarLabel" class="center">Yugam Radio</div>
+          <div class="left">
+            <ons-toolbar-button onclick="fn.toggleMenu()">
+              <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
+            </ons-toolbar-button>
+          </div>
+        </ons-toolbar>
+        <ons-tabbar swipeable id="appTabbar" position="auto">
+          <ons-tab label="Home" icon="ion-home" page="home.html" active></ons-tab>
+          <ons-tab label="Shows" icon="ion-edit" page="shows.html"></ons-tab>
+          <ons-tab label="News" icon="ion-film-marker" page="news.html"></ons-tab>
+        </ons-tabbar>
+
+
+      </ons-page>
+    </template>
+
+    <template id="sidemenu.html">
+      <ons-page>
+        <ons-list>
+        <ons-list-item onclick="fn.load('home.html')" tappable>
+          Home
+        </ons-list-item>
+        <ons-list-item onclick="fn.load('settings.html')" tappable>
+          Settings
+        </ons-list-item>
+        <ons-list-item onclick="fn.load('about.html')" tappable>
+          About
+        </ons-list-item>
+      </ons-list>
+      </ons-page>
+    </template>
+
+
+  </body>
+</html>
