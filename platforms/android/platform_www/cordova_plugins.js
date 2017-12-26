@@ -369,14 +369,6 @@ module.exports = [
       "navigator.notification",
       "navigator"
     ]
-  },
-  {
-    "id": "phonegap-plugin-local-notification.Notification",
-    "file": "plugins/phonegap-plugin-local-notification/www/notification.js",
-    "pluginId": "phonegap-plugin-local-notification",
-    "clobbers": [
-      "Notification"
-    ]
   }
 ];
 module.exports.metadata = 
@@ -392,8 +384,7 @@ module.exports.metadata =
   "cordova-plugin-globalization": "1.0.9",
   "cordova-plugin-inappbrowser": "1.7.2",
   "cordova-plugin-network-information": "1.3.4",
-  "cordova-plugin-vibration": "2.1.6",
-  "phonegap-plugin-local-notification": "1.0.1"
+  "cordova-plugin-vibration": "2.1.6"
 };
 // BOTTOM OF METADATA
 });
