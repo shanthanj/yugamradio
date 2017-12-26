@@ -371,19 +371,12 @@ module.exports = [
     ]
   },
   {
-    "id": "cordova-plugin-badge.Badge",
-    "file": "plugins/cordova-plugin-badge/www/badge.js",
-    "pluginId": "cordova-plugin-badge",
-    "clobbers": [
-      "cordova.plugins.notification.badge"
-    ]
-  },
-  {
     "id": "cordova-plugin-local-notification.LocalNotification",
     "file": "plugins/cordova-plugin-local-notification/www/local-notification.js",
     "pluginId": "cordova-plugin-local-notification",
     "clobbers": [
-      "cordova.plugins.notification.local"
+      "cordova.plugins.notification.local",
+      "plugin.notification.local"
     ]
   },
   {
@@ -419,8 +412,8 @@ module.exports.metadata =
   "cordova-plugin-inappbrowser": "1.7.2",
   "cordova-plugin-network-information": "1.3.4",
   "cordova-plugin-vibration": "2.1.6",
-  "cordova-plugin-badge": "0.8.5",
-  "cordova-plugin-local-notification": "0.9.0-beta.1"
+  "cordova-plugin-app-event": "1.2.1",
+  "cordova-plugin-local-notification": "0.8.4"
 };
 // BOTTOM OF METADATA
 });

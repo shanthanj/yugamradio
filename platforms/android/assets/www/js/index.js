@@ -53,11 +53,11 @@ function onDeviceReady() {
 }
 
 function initPushNotification() {
-  /*cordova.plugins.notification.local.schedule({
+  cordova.plugins.notification.local.schedule({
     title: 'My first notification',
     text: 'Thats pretty easy...',
     foreground: true
-  });*/
+});
   console.log("Push Notification Initialized");
 }
 

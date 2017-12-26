@@ -1,7 +1,7 @@
 /*
- * Apache 2.0 License
+ * Copyright (c) 2013-2015 by appPlant UG. All rights reserved.
  *
- * Copyright (c) Sebastian Katzer 2017
+ * @APPPLANT_LICENSE_HEADER_START@
  *
  * This file contains Original Code and/or Modifications of Original Code
  * as defined in and that are subject to the Apache License
@@ -17,86 +17,110 @@
  * FITNESS FOR A PARTICULAR PURPOSE, QUIET ENJOYMENT OR NON-INFRINGEMENT.
  * Please see the License for the specific language governing rights and
  * limitations under the License.
+ *
+ * @APPPLANT_LICENSE_HEADER_END@
  */
 
 var exec    = require('cordova/exec'),
     channel = require('cordova/channel');
 
+
+/***********
+ * MEMBERS *
+ ***********/
+
 // Default values
 exports._defaults = {
-    actionGroupId : null,
-    actions       : [],
-    attachments   : [],
-    autoClear     : true,
-    badge         : null,
-    channel       : null,
-    color         : null,
-    data          : null,
-    defaults      : 0,
-    foreground    : false,
-    group         : null,
-    groupSummary  : false,
-    icon          : null,
-    id            : 0,
-    launch        : true,
-    led           : true,
-    lockscreen    : true,
-    mediaSession  : null,
-    number        : 0,
-    priority      : 0,
-    progressBar   : false,
-    showWhen      : true,
-    silent        : false,
-    smallIcon     : 'res://icon',
-    sound         : true,
-    sticky        : false,
-    summary       : null,
-    text          : '',
-    title         : '',
-    trigger       : { type : 'calendar' },
-    vibrate       : false,
-    wakeup        : true
+    text:  '',
+    title: '',
+    sound: 'res://platform_default',
+    badge: 0,
+    id:    0,
+    data:  undefined,
+    every: undefined,
+    at:    undefined
 };
 
-// Listener
+// listener
 exports._listener = {};
+
+// Registered permission flag
+exports._registered = false;
+
+
+/********
+ * UTIL *
+ ********/
+
+/**
+ * Merge platform specific properties into the default ones.
+ *
+ * @return {Object}
+ *      The default properties for the platform
+ */
+exports.applyPlatformSpecificOptions = function () {
+    var defaults = this._defaults;
+
+    switch (device.platform) {
+    case 'Android':
+        defaults.icon      = 'res://ic_popup_reminder';
+        defaults.smallIcon = undefined;
+        defaults.ongoing   = false;
+        defaults.autoClear = true;
+        defaults.led       = undefined;
+        defaults.ledOnTime = undefined;
+        defaults.ledOffTime = undefined;
+        defaults.color     = undefined;
+        break;
+    }
+
+    return defaults;
+};
 
 /**
  * Merge custom properties with the default values.
  *
- * @param [ Object ] options Set of custom values.
+ * @param {Object} options
+ *      Set of custom values
  *
- * @retrun [ Object ]
+ * @retrun {Object}
+ *      The merged property list
  */
 exports.mergeWithDefaults = function (options) {
-    var values = this.getDefaults();
+    var defaults = this.getDefaults();
 
-    if (values.hasOwnProperty('sticky')) {
-        options.sticky = this.getValueFor(options, 'sticky', 'ongoing');
+    options.at   = this.getValueFor(options, 'at', 'firstAt', 'date');
+    options.text = this.getValueFor(options, 'text', 'message');
+    options.data = this.getValueFor(options, 'data', 'json');
+
+    if (defaults.hasOwnProperty('autoClear')) {
+        options.autoClear = this.getValueFor(options, 'autoClear', 'autoCancel');
     }
 
-    if (options.sticky && options.autoClear !== true) {
+    if (options.autoClear !== true && options.ongoing) {
         options.autoClear = false;
     }
 
-    Object.assign(values, options);
+    if (options.at === undefined || options.at === null) {
+        options.at = new Date();
+    }
 
-    for (var key in values) {
-        if (values[key] !== null) {
-            options[key] = values[key];
-        } else {
-            delete options[key];
-        }
-
-        if (!this._defaults.hasOwnProperty(key)) {
-            console.warn('Unknown property: ' + key);
+    for (var key in defaults) {
+        if (options[key] === null || options[key] === undefined) {
+            if (options.hasOwnProperty(key) && ['data','sound'].indexOf(key) > -1) {
+                options[key] = undefined;
+            } else {
+                options[key] = defaults[key];
+            }
         }
     }
 
-    options.meta = {
-        plugin:  'cordova-plugin-local-notifications',
-        version: '0.9-beta'
-    };
+    for (key in options) {
+        if (!defaults.hasOwnProperty(key)) {
+            delete options[key];
+            console.warn('Unknown property: ' + key);
+        }
+    }
 
     return options;
 };
@@ -104,235 +128,98 @@ exports.mergeWithDefaults = function (options) {
 /**
  * Convert the passed values to their required type.
  *
- * @param [ Object ] options Properties to convert for.
+ * @param {Object} options
+ *      Set of custom values
  *
- * @return [ Object ] The converted property list
+ * @retrun {Object}
+ *      The converted property list
  */
 exports.convertProperties = function (options) {
-    var parseToInt = function (prop, options) {
-        if (isNaN(options[prop])) {
-            console.warn(prop + ' is not a number: ' + options[prop]);
-            return this._defaults[prop];
-        } else {
-            return Number(options[prop]);
-        }
-    };
 
     if (options.id) {
-        options.id = parseToInt('id', options);
+        if (isNaN(options.id)) {
+            options.id = this.getDefaults().id;
+            console.warn('Id is not a number: ' + options.id);
+        } else {
+            options.id = Number(options.id);
+        }
     }
 
     if (options.title) {
         options.title = options.title.toString();
     }
 
+    if (options.text) {
+        options.text  = options.text.toString();
+    }
+
     if (options.badge) {
-        options.badge = parseToInt('badge', options);
+        if (isNaN(options.badge)) {
+            options.badge = this.getDefaults().badge;
+            console.warn('Badge number is not a number: ' + options.id);
+        } else {
+            options.badge = Number(options.badge);
+        }
     }
 
-    if (options.priority) {
-        options.priority = parseToInt('priority', options);
-    }
-
-    if (options.foreground === true) {
-        options.priority = Math.max(options.priority, 1);
-    }
-
-    if (options.foreground === false) {
-        options.priority = Math.min(options.priority, 0);
-    }
-
-    if (options.defaults) {
-        options.defaults = parseToInt('defaults', options);
-    }
-
-    if (options.smallIcon && !options.smallIcon.match(/^res:/)) {
-        console.warn('Property "smallIcon" must be of kind res://...');
-    }
-
-    options.data = JSON.stringify(options.data);
-
-    this.convertTrigger(options);
-    this.convertActions(options);
-    this.convertProgressBar(options);
-
-    return options;
-};
-
-/**
- * Convert the passed values to their required type, modifying them
- * directly for Android and passing the converted list back for iOS.
- *
- * @param [ Map ] options Set of custom values.
- *
- * @return [ Map ] Interaction object with category & actions.
- */
-exports.convertActions = function (options) {
-    var actions = [];
-
-    if (!options.actions)
-        return null;
-
-    for (var action of options.actions) {
-
-        if (!action.id) {
-            console.warn('Action with title ' + action.title + ' ' +
-                         'has no id and will not be added.');
-            continue;
+    if (options.at) {
+        if (typeof options.at == 'object') {
+            options.at = options.at.getTime();
         }
 
-        action.id = action.id.toString();
-
-        actions.push(action);
+        options.at = Math.round(options.at/1000);
     }
 
-    options.actions = actions;
+    if (typeof options.data == 'object') {
+        options.data = JSON.stringify(options.data);
+    }
+
+    if (options.every) {
+        if (device.platform == 'iOS' && typeof options.every != 'string') {
+            options.every = this.getDefaults().every;
+            var warning = 'Every option is not a string: ' + options.id;
+            warning += '. Expects one of: second, minute, hour, day, week, ';
+            warning += 'month, year on iOS.';
+            console.warn(warning);
+        }
+    }
 
     return options;
 };
 
 /**
- * Convert the passed values for the trigger to their required type.
+ * Create callback, which will be executed within a specific scope.
  *
- * @param [ Map ] options Set of custom values.
+ * @param {Function} callbackFn
+ *      The callback function
+ * @param {Object} scope
+ *      The scope for the function
  *
- * @return [ Map ] Interaction object with trigger spec.
+ * @return {Function}
+ *      The new callback function
  */
-exports.convertTrigger = function (options) {
-    var trigger  = options.trigger || {},
-        date     = this.getValueFor(trigger, 'at', 'firstAt', 'date');
+exports.createCallbackFn = function (callbackFn, scope) {
 
-    var dateToNum = function (date) {
-        var num = typeof date == 'object' ? date.getTime() : date;
-        return Math.round(num);
-    };
-
-    if (!options.trigger)
-        return;
-
-    if (!trigger.type) {
-        trigger.type = trigger.center ? 'location' : 'calendar';
-    }
-
-    var isCal = trigger.type == 'calendar';
-
-    if (isCal && !date) {
-        date = this.getValueFor(options, 'at', 'firstAt', 'date');
-    }
-
-    if (isCal && !trigger.every && options.every) {
-        trigger.every = options.every;
-    }
-
-    if (isCal && (trigger.in || trigger.every)) {
-        date = null;
-    }
-
-    if (isCal && date) {
-        trigger.at = dateToNum(date);
-    }
-
-    if (isCal && trigger.firstAt) {
-        trigger.firstAt = dateToNum(trigger.firstAt);
-    }
-
-    if (isCal && trigger.before) {
-        trigger.before = dateToNum(trigger.before);
-    }
-
-    if (isCal && trigger.after) {
-        trigger.after = dateToNum(trigger.after);
-    }
-
-    if (!trigger.count && device.platform == 'windows') {
-        trigger.count = trigger.every ? 5 : 1;
-    }
-
-    if (!isCal) {
-        trigger.notifyOnEntry = !!trigger.notifyOnEntry;
-        trigger.notifyOnExit  = trigger.notifyOnExit === true;
-        trigger.radius        = trigger.radius || 5;
-        trigger.single        = !!trigger.single;
-    }
-
-    if (!isCal || trigger.at) {
-        delete trigger.every;
-    }
-
-    delete options.every;
-    delete options.at;
-    delete options.firstAt;
-    delete options.date;
-
-    options.trigger = trigger;
-
-    return options;
-};
-
-/**
- * Convert the passed values for the progressBar to their required type.
- *
- * @param [ Map ] options Set of custom values.
- *
- * @return [ Map ] Interaction object with trigger spec.
- */
-exports.convertProgressBar = function (options) {
-    var isAndroid = device.platform == 'Android',
-        cfg       = options.progressBar;
-
-    if (cfg === undefined)
-        return;
-
-    if (typeof cfg === 'boolean') {
-        cfg = options.progressBar = { enabled: cfg };
-    }
-
-    if (typeof cfg.enabled !== 'boolean') {
-        cfg.enabled = !!(cfg.value || cfg.maxValue || cfg.indeterminate !== null);
-    }
-
-    cfg.value = cfg.value || 0;
-
-    if (isAndroid) {
-        cfg.maxValue      = cfg.maxValue || 100;
-        cfg.indeterminate = !!cfg.indeterminate;
-    }
-
-    cfg.enabled = !!cfg.enabled;
-
-    return options;
-};
-
-/**
- * Create a callback function to get executed within a specific scope.
- *
- * @param [ Function ] fn    The function to be exec as the callback.
- * @param [ Object ]   scope The callback function's scope.
- *
- * @return [ Function ]
- */
-exports.createCallbackFn = function (fn, scope) {
-
-    if (typeof fn != 'function')
+    if (typeof callbackFn != 'function')
         return;
 
     return function () {
-        fn.apply(scope || this, arguments);
+        callbackFn.apply(scope || this, arguments);
     };
 };
 
 /**
  * Convert the IDs to numbers.
  *
- * @param [ Array ] ids
+ * @param {String/Number[]} ids
  *
- * @return [ Array<Number> ]
+ * @return Array of Numbers
  */
 exports.convertIds = function (ids) {
     var convertedIds = [];
 
-    for (var id of ids) {
-        convertedIds.push(Number(id));
+    for (var i = 0; i < ids.length; i++) {
+        convertedIds.push(Number(ids[i]));
     }
 
     return convertedIds;
@@ -341,41 +228,30 @@ exports.convertIds = function (ids) {
 /**
  * First found value for the given keys.
  *
- * @param [ Object ]         options Object with key-value properties.
- * @param [ *Array<String> ] keys    List of keys.
- *
- * @return [ Object ]
+ * @param {Object} options
+ *      Object with key-value properties
+ * @param {String[]} keys*
+ *      Key list
  */
 exports.getValueFor = function (options) {
     var keys = Array.apply(null, arguments).slice(1);
 
-    for (var key of keys) {
+    for (var i = 0; i < keys.length; i++) {
+        var key = keys[i];
+
         if (options.hasOwnProperty(key)) {
             return options[key];
         }
     }
-
-    return null;
 };
 
 /**
- * Convert a value to an array.
+ * Fire event with given arguments.
  *
- * @param [ Object ] obj Any kind of object.
- *
- * @return [ Array ] An array with the object as first item.
- */
-exports.toArray = function (obj) {
-    return Array.isArray(obj) ? Array.from(obj) : [obj];
-};
-
-/**
- * Fire the event with given arguments.
- *
- * @param [ String ] event The event's name.
- * @param [ *Array]  args  The callback's arguments.
- *
- * @return [ Void]
+ * @param {String} event
+ *      The event's name
+ * @param {args*}
+ *      The callback's arguments
  */
 exports.fireEvent = function (event) {
     var args     = Array.apply(null, arguments).slice(1),
@@ -383,10 +259,6 @@ exports.fireEvent = function (event) {
 
     if (!listener)
         return;
-
-    if (args[0] && typeof args[0].data === 'string') {
-        args[0].data = JSON.parse(args[0].data);
-    }
 
     for (var i = 0; i < listener.length; i++) {
         var fn    = listener[i][0],
@@ -399,15 +271,17 @@ exports.fireEvent = function (event) {
 /**
  * Execute the native counterpart.
  *
- * @param [ String ]  action   The name of the action.
- * @param [ Array ]   args     Array of arguments.
- * @param [ Function] callback The callback function.
- * @param [ Object ] scope     The scope for the function.
- *
- * @return [ Void ]
+ * @param {String} action
+ *      The name of the action
+ * @param args[]
+ *      Array of arguments
+ * @param {Function} callback
+ *      The callback function
+ * @param {Object} scope
+ *      The scope for the function
  */
 exports.exec = function (action, args, callback, scope) {
-    var fn     = this.createCallbackFn(callback, scope),
+    var fn = this.createCallbackFn(callback, scope),
         params = [];
 
     if (Array.isArray(args)) {
@@ -419,26 +293,23 @@ exports.exec = function (action, args, callback, scope) {
     exec(fn, null, 'LocalNotification', action, params);
 };
 
-exports.setLaunchDetails = function () {
-    exports.exec('launch', null, function (details) {
-        if (details) {
-            cordova.plugins.notification.local.launchDetails = details;
-        }
-    });
-};
+
+/*********
+ * HOOKS *
+ *********/
 
 // Called after 'deviceready' event
 channel.deviceready.subscribe(function () {
-    if (['Android', 'windows', 'iOS'].indexOf(device.platform) > -1) {
-        exports.exec('ready');
-    }
+    // Device is ready now, the listeners are registered
+    // and all queued events can be executed.
+    exec(null, null, 'LocalNotification', 'deviceready', []);
 });
 
 // Called before 'deviceready' event
 channel.onCordovaReady.subscribe(function () {
+    // Device plugin is ready now
     channel.onCordovaInfoReady.subscribe(function () {
-        if (['Android', 'windows', 'iOS'].indexOf(device.platform) > -1) {
-            exports.setLaunchDetails();
-        }
+        // Merge platform specifics into defaults
+        exports.applyPlatformSpecificOptions();
     });
 });

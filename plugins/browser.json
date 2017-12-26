@@ -48,7 +48,7 @@
     "cordova-plugin-file": {
       "PACKAGE_NAME": "com.yugam.radio"
     },
-    "cordova-plugin-badge": {
+    "cordova-plugin-app-event": {
       "PACKAGE_NAME": "com.yugam.radio"
     }
   }
