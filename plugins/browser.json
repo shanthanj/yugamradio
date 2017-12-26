@@ -36,6 +36,9 @@
     },
     "cordova-plugin-vibration": {
       "PACKAGE_NAME": "com.yugam.radio"
+    },
+    "cordova-plugin-local-notification": {
+      "PACKAGE_NAME": "com.yugam.radio"
     }
   },
   "dependent_plugins": {
@@ -43,6 +46,9 @@
       "PACKAGE_NAME": "com.yugam.radio"
     },
     "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.yugam.radio"
+    },
+    "cordova-plugin-badge": {
       "PACKAGE_NAME": "com.yugam.radio"
     }
   }
