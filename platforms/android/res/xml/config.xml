@@ -38,6 +38,9 @@
     <feature name="LocalNotification">
         <param name="android-package" value="de.appplant.cordova.plugin.localnotification.LocalNotification" />
     </feature>
+    <feature name="MusicControls">
+        <param name="android-package" value="com.homerours.musiccontrols.MusicControls" />
+    </feature>
     <name>Yugam Radio</name>
     <description>
         Hello World sample application that responds to the deviceready event.

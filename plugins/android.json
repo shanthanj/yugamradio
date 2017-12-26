@@ -39,6 +39,9 @@
     },
     "cordova-plugin-local-notification": {
       "PACKAGE_NAME": "com.yugam.radio"
+    },
+    "cordova-plugin-music-controls": {
+      "PACKAGE_NAME": "com.yugam.radio"
     }
   },
   "dependent_plugins": {

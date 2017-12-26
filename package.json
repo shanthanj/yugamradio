@@ -18,7 +18,8 @@
       "cordova-plugin-inappbrowser": {},
       "cordova-plugin-network-information": {},
       "cordova-plugin-vibration": {},
-      "cordova-plugin-local-notification": {}
+      "cordova-plugin-local-notification": {},
+      "cordova-plugin-music-controls": {}
     }
   },
   "dependencies": {
@@ -35,6 +36,7 @@
     "cordova-plugin-inappbrowser": "~1.7.1",
     "cordova-plugin-local-notification": "^0.8.4",
     "cordova-plugin-media-capture": "~1.4.3",
+    "cordova-plugin-music-controls": "git+https://github.com/homerours/cordova-music-controls-plugin.git",
     "cordova-plugin-network-information": "~1.3.3",
     "cordova-plugin-vibration": "~2.1.5"
   }

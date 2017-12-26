@@ -396,6 +396,14 @@ module.exports = [
       "cordova.plugins.notification.local.core",
       "plugin.notification.local.core"
     ]
+  },
+  {
+    "id": "cordova-plugin-music-controls.MusicControls",
+    "file": "plugins/cordova-plugin-music-controls/www/MusicControls.js",
+    "pluginId": "cordova-plugin-music-controls",
+    "clobbers": [
+      "MusicControls"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -413,7 +421,8 @@ module.exports.metadata =
   "cordova-plugin-network-information": "1.3.4",
   "cordova-plugin-vibration": "2.1.6",
   "cordova-plugin-app-event": "1.2.1",
-  "cordova-plugin-local-notification": "0.8.4"
+  "cordova-plugin-local-notification": "0.8.4",
+  "cordova-plugin-music-controls": "2.1.4"
 };
 // BOTTOM OF METADATA
 });

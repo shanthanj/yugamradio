@@ -46,8 +46,9 @@ document.addEventListener('init', function(event) {
 });
 
 function onDeviceReady() {
-	html5audio.play();
   initPushNotification();
+	html5audio.play();
+
 	getStreamStats();
 	return false;
 }
@@ -56,6 +57,7 @@ function initPushNotification() {
   cordova.plugins.notification.local.schedule({
     title: 'My first notification',
     text: 'Thats pretty easy...',
+    icon: 'www/img/logo.png'
     foreground: true
 });
   console.log("Push Notification Initialized");

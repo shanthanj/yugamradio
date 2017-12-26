@@ -118,4 +118,5 @@
     <plugin name="cordova-plugin-whitelist" spec="~1.2.1" />
     <plugin name="cordova-plugin-app-preferences" spec="https://github.com/apla/me.apla.cordova.app-preferences" />
     <plugin name="cordova-plugin-local-notification" spec="^0.8.4" />
+    <plugin name="cordova-plugin-music-controls" spec="https://github.com/homerours/cordova-music-controls-plugin" />
 </widget>

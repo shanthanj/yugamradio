@@ -46,8 +46,9 @@ document.addEventListener('init', function(event) {
 });
 
 function onDeviceReady() {
-	html5audio.play();
   initPushNotification();
+	html5audio.play();
+
 	getStreamStats();
 	return false;
 }

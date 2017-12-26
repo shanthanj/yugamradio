@@ -1,0 +1,104 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "https://github.com/homerours/cordova-music-controls-plugin",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "https://github.com/homerours/cordova-music-controls-plugin",
+        "spec": "git+https://github.com/homerours/cordova-music-controls-plugin.git",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:homerours/cordova-music-controls-plugin.git",
+          "sshUrl": "git+ssh://git@github.com/homerours/cordova-music-controls-plugin.git",
+          "httpsUrl": "git+https://github.com/homerours/cordova-music-controls-plugin.git",
+          "gitUrl": "git://github.com/homerours/cordova-music-controls-plugin.git",
+          "shortcut": "github:homerours/cordova-music-controls-plugin",
+          "directUrl": "https://raw.githubusercontent.com/homerours/cordova-music-controls-plugin/master/package.json"
+        }
+      },
+      "c:\\projects\\yugam_radio"
+    ]
+  ],
+  "_from": "git+https://github.com/homerours/cordova-music-controls-plugin.git",
+  "_id": "cordova-plugin-music-controls@2.1.4",
+  "_inCache": true,
+  "_location": "/cordova-plugin-music-controls",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "https://github.com/homerours/cordova-music-controls-plugin",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "https://github.com/homerours/cordova-music-controls-plugin",
+    "spec": "git+https://github.com/homerours/cordova-music-controls-plugin.git",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:homerours/cordova-music-controls-plugin.git",
+      "sshUrl": "git+ssh://git@github.com/homerours/cordova-music-controls-plugin.git",
+      "httpsUrl": "git+https://github.com/homerours/cordova-music-controls-plugin.git",
+      "gitUrl": "git://github.com/homerours/cordova-music-controls-plugin.git",
+      "shortcut": "github:homerours/cordova-music-controls-plugin",
+      "directUrl": "https://raw.githubusercontent.com/homerours/cordova-music-controls-plugin/master/package.json"
+    }
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/homerours/cordova-music-controls-plugin.git#8ae1fdc031bef8b7df7933c4e28e47ec6ce5d666",
+  "_shasum": "2e0cb47e282a8ef0796e428ddb277a8169a0aae5",
+  "_shrinkwrap": null,
+  "_spec": "https://github.com/homerours/cordova-music-controls-plugin",
+  "_where": "c:\\projects\\yugam_radio",
+  "author": {
+    "name": "homerours"
+  },
+  "bugs": {
+    "url": "https://github.com/homerours/cordova-music-controls-plugin/issues"
+  },
+  "cordova": {
+    "id": "cordova-plugin-music-controls",
+    "platforms": [
+      "android",
+      "windows",
+      "ios"
+    ]
+  },
+  "dependencies": {},
+  "description": "Music controls for Cordova apps",
+  "devDependencies": {},
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.4.0"
+    }
+  ],
+  "gitHead": "8ae1fdc031bef8b7df7933c4e28e47ec6ce5d666",
+  "homepage": "https://github.com/homerours/cordova-music-controls-plugin#readme",
+  "keywords": [
+    "cordova",
+    "music",
+    "controller",
+    "controls",
+    "media",
+    "plugin",
+    "notification",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-windows"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-music-controls",
+  "optionalDependencies": {},
+  "readme": "# Cordova Music Controls Plugin\r\n\r\n<img src='https://imgur.com/fh3ACOq.png' width='564' height='342'>\r\n\r\nMusic controls for Cordova applications. Display a 'media' notification with play/pause, previous, next buttons, allowing the user to control the play. Handle also headset event (plug, unplug, headset button).\r\n\r\n## Supported platforms\r\n- Android (4.1+)\r\n- Windows (10+, by [filfat](https://github.com/filfat))\r\n- iOS 8+ (by [0505gonzalez](https://github.com/0505gonzalez))\r\n\r\n## Installation\r\n`cordova plugin add https://github.com/homerours/cordova-music-controls-plugin`\r\n\r\n## Methods\r\n- Create the media controls:\r\n```javascript\r\nMusicControls.create({\r\n    track       : 'Time is Running Out',\t\t// optional, default : ''\r\n\tartist      : 'Muse',\t\t\t\t\t\t// optional, default : ''\r\n    cover       : 'albums/absolution.jpg',\t\t// optional, default : nothing\r\n\t// cover can be a local path (use fullpath 'file:///storage/emulated/...', or only 'my_image.jpg' if my_image.jpg is in the www folder of your app)\r\n\t//\t\t\t or a remote url ('http://...', 'https://...', 'ftp://...')\r\n\tisPlaying   : true,\t\t\t\t\t\t\t// optional, default : true\r\n\tdismissable : true,\t\t\t\t\t\t\t// optional, default : false\r\n\r\n\t// hide previous/next/close buttons:\r\n\thasPrev   : false,\t\t// show previous button, optional, default: true\r\n\thasNext   : false,\t\t// show next button, optional, default: true\r\n\thasClose  : true,\t\t// show close button, optional, default: false\r\n\r\n\t// iOS only, optional\r\n\talbum       : 'Absolution',     // optional, default: ''\r\n\tduration : 60, // optional, default: 0\r\n\telapsed : 10, // optional, default: 0\r\n  \thasSkipForward : true, //optional, default: false. true value overrides hasNext.\r\n  \thasSkipBackward : true, //optional, default: false. true value overrides hasPrev.\r\n  \tskipForwardInterval : 15, //optional. default: 0.\r\n\tskipBackwardInterval : 15, //optional. default: 0.\r\n\thasScrubbing : false, //optional. default to false. Enable scrubbing from control center progress bar \r\n\r\n\t// Android only, optional\r\n\t// text displayed in the status bar when the notification (and the ticker) are updated\r\n\tticker\t  : 'Now playing \"Time is Running Out\"',\r\n\t//All icons default to their built-in android equivalents\r\n\t//The supplied drawable name, e.g. 'media_play', is the name of a drawable found under android/res/drawable* folders\r\n\tplayIcon: 'media_play',\r\n\tpauseIcon: 'media_pause',\r\n\tprevIcon: 'media_prev',\r\n\tnextIcon: 'media_next',\r\n\tcloseIcon: 'media_close',\r\n\tnotificationIcon: 'notification'\r\n}, onSuccess, onError);\r\n```\r\n\r\n- Destroy the media controller:\r\n```javascript\r\nMusicControls.destroy(onSuccess, onError);\r\n```\r\n\r\n- Subscribe events to the media controller:\r\n```javascript\r\nfunction events(action) {\r\n\r\n  const message = JSON.parse(action).message;\r\n\tswitch(message) {\r\n\t\tcase 'music-controls-next':\r\n\t\t\t// Do something\r\n\t\t\tbreak;\r\n\t\tcase 'music-controls-previous':\r\n\t\t\t// Do something\r\n\t\t\tbreak;\r\n\t\tcase 'music-controls-pause':\r\n\t\t\t// Do something\r\n\t\t\tbreak;\r\n\t\tcase 'music-controls-play':\r\n\t\t\t// Do something\r\n\t\t\tbreak;\r\n\t\tcase 'music-controls-destroy':\r\n\t\t\t// Do something\r\n\t\t\tbreak;\r\n\r\n\t\t// External controls (iOS only)\r\n    \tcase 'music-controls-toggle-play-pause' :\r\n\t\t\t// Do something\r\n\t\t\tbreak;\r\n    \tcase 'music-controls-seek-to':\r\n\t\t\tconst seekToInSeconds = JSON.parse(action).position;\r\n\t\t\tMusicControls.updateElapsed({\r\n\t\t\t\telapsed: seekToInSeconds,\r\n\t\t\t\tisPlaying: true\r\n\t\t\t});\r\n\t\t\t// Do something\r\n\t\t\tbreak;\r\n\r\n\t\t// Headset events (Android only)\r\n\t\t// All media button events are listed below\r\n\t\tcase 'music-controls-media-button' :\r\n\t\t\t// Do something\r\n\t\t\tbreak;\r\n\t\tcase 'music-controls-headset-unplugged':\r\n\t\t\t// Do something\r\n\t\t\tbreak;\r\n\t\tcase 'music-controls-headset-plugged':\r\n\t\t\t// Do something\r\n\t\t\tbreak;\r\n\t\tdefault:\r\n\t\t\tbreak;\r\n\t}\r\n}\r\n\r\n// Register callback\r\nMusicControls.subscribe(events);\r\n\r\n// Start listening for events\r\n// The plugin will run the events function each time an event is fired\r\nMusicControls.listen();\r\n```\r\n\r\n- Toggle play/pause:\r\n```javascript\r\nMusicControls.updateIsPlaying(true); // toggle the play/pause notification button\r\nMusicControls.updateDismissable(true);\r\n```\r\n\r\n- iOS Specific Events:\r\nAllows you to listen for iOS events fired from the scrubber in control center.\r\n```javascript\r\nMusicControls.updateElapsed({\r\n\telapsed: 208, // seconds\r\n\tisPlaying: true\r\n});\r\n```\r\n\r\n## List of media button events \r\n- Default:\r\n```javascript\r\n'music-controls-media-button'\r\n```\r\n\r\n- Android only:\r\n```javascript\r\n'music-controls-media-button-next', 'music-controls-media-button-pause', 'music-controls-media-button-play',\r\n'music-controls-media-button-play-pause', 'music-controls-media-button-previous', 'music-controls-media-button-stop',\r\n'music-controls-media-button-fast-forward', 'music-controls-media-button-rewind', 'music-controls-media-button-skip-backward',\r\n'music-controls-media-button-skip-forward', 'music-controls-media-button-step-backward', 'music-controls-media-button-step-forward',\r\n'music-controls-media-button-meta-left', 'music-controls-media-button-meta-right', 'music-controls-media-button-music',\r\n'music-controls-media-button-volume-up', 'music-controls-media-button-volume-down', 'music-controls-media-button-volume-mute',\r\n'music-controls-media-button-headset-hook'\r\n```\r\n\r\n- iOS Only:\r\n```javascript\r\n'music-controls-skip-forward', 'music-controls-skip-backward'\r\n```\r\n\r\n## Contributing\r\n\r\n1. Fork it\r\n2. Create your feature branch (`git checkout -b my-new-feature`)\r\n3. Commit your changes (`git commit -am 'Add some feature'`)\r\n4. Push to the branch (`git push origin my-new-feature`)\r\n5. Create new Pull Request\r\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/homerours/cordova-music-controls-plugin.git"
+  },
+  "version": "2.1.4"
+}
