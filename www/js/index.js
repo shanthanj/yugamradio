@@ -89,7 +89,7 @@ function initiateMusicControls() {
       prevIcon: 'media_prev',
       nextIcon: 'media_next',
       closeIcon: 'media_close',
-      notificationIcon: 'notification'
+      notificationIcon: 'file://res/icon/android/drawable-ldpi-icon.png'
   }, onSuccess, onError);
 
   MusicControls.destroy(onSuccess, onError);
@@ -122,9 +122,11 @@ function events(action) {
             break;
         case 'music-controls-pause':
             html5audio.stop();
+            MusicControls.updateIsPlaying(false);
             break;
         case 'music-controls-play':
             html5audio.play();
+            MusicControls.updateIsPlaying(true);
             break;
         case 'music-controls-destroy':
             // Do something
