@@ -4,7 +4,8 @@
   "displayName": "helloworld",
   "cordova": {
     "platforms": [
-      "android"
+      "android",
+      "browser"
     ],
     "plugins": {
       "cordova-plugin-battery-status": {},
@@ -19,7 +20,17 @@
       "cordova-plugin-network-information": {},
       "cordova-plugin-vibration": {},
       "cordova-plugin-local-notification": {},
-      "cordova-plugin-music-controls": {}
+      "cordova-plugin-music-controls": {},
+      "cordova-plugin-console": {},
+      "cordova-plugin-contacts": {},
+      "cordova-plugin-device-motion": {},
+      "cordova-plugin-device-orientation": {},
+      "cordova-plugin-file-transfer": {},
+      "cordova-plugin-media": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-app-preferences": {}
     }
   },
   "dependencies": {
@@ -38,6 +49,16 @@
     "cordova-plugin-media-capture": "~1.4.3",
     "cordova-plugin-music-controls": "git+https://github.com/homerours/cordova-music-controls-plugin.git",
     "cordova-plugin-network-information": "~1.3.3",
-    "cordova-plugin-vibration": "~2.1.5"
+    "cordova-plugin-vibration": "~2.1.5",
+    "cordova-plugin-console": "~1.0.2",
+    "cordova-plugin-contacts": "~2.0.1",
+    "cordova-plugin-device-motion": "~1.2.0",
+    "cordova-plugin-device-orientation": "~1.0.2",
+    "cordova-plugin-file-transfer": "~1.5.0",
+    "cordova-plugin-media": "~2.2.0",
+    "cordova-plugin-splashscreen": "~3.2.1",
+    "cordova-plugin-statusbar": "~2.1.2",
+    "cordova-plugin-whitelist": "~1.2.1",
+    "cordova-plugin-app-preferences": "https://github.com/apla/me.apla.cordova.app-preferences"
   }
 }
