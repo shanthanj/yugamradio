@@ -56,9 +56,9 @@ function onDeviceReady() {
 function initiateMusicControls() {
     console.log('inside initiate music controls');
     MusicControls.create({
-      track       : 'Time is Running Out',		// optional, default : ''
-      //artist      : 'Muse',						// optional, default : ''
-      cover       : 'file:///img/logo0.png',		// optional, default : nothing
+      track       : 'Yugam Radio',		// optional, default : ''
+      artist      : 'Muse',						// optional, default : ''
+      cover       : 'file://res/icon/android/drawable-hdpi-icon.png',		// optional, default : nothing
       // cover can be a local path (use fullpath 'file:///storage/emulated/...', or only 'my_image.jpg' if my_image.jpg is in the www folder of your app)
       //			 or a remote url ('http://...', 'https://...', 'ftp://...')
       isPlaying   : true,							// optional, default : true
@@ -70,7 +70,7 @@ function initiateMusicControls() {
       hasClose  : false,		// show close button, optional, default: false
 
       // iOS only, optional
-      album       : 'Absolution',     // optional, default: ''
+      album       : 'Yugam Radio',     // optional, default: ''
     //  duration : 60, // optional, default: 0
   //    elapsed : 10, // optional, default: 0
     //	hasSkipForward : true, //optional, default: false. true value overrides hasNext.
@@ -121,10 +121,10 @@ function events(action) {
             // Do something
             break;
         case 'music-controls-pause':
-            // Do something
+            html5audio.stop();
             break;
         case 'music-controls-play':
-            // Do something
+            html5audio.play();
             break;
         case 'music-controls-destroy':
             // Do something
