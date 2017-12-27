@@ -57,7 +57,7 @@ function initiateMusicControls() {
     console.log('inside initiate music controls');
     MusicControls.create({
       track       : 'Yugam Radio',		// optional, default : ''
-      artist      : 'Muse',						// optional, default : ''
+      artist      : $('#songTitle').text(),						// optional, default : ''
       cover       : 'http://yugamradio.com/images/cover.png',		// optional, default : nothing
       // cover can be a local path (use fullpath 'file:///storage/emulated/...', or only 'my_image.jpg' if my_image.jpg is in the www folder of your app)
       //			 or a remote url ('http://...', 'https://...', 'ftp://...')
@@ -139,8 +139,9 @@ function events(action) {
     	case 'music-controls-seek-to':
             const seekToInSeconds = JSON.parse(action).position;
             MusicControls.updateElapsed({
-                elapsed: seekToInSeconds,
-                isPlaying: true
+                //elapsed: seekToInSeconds,
+                isPlaying: true,
+                artist: $('#songTitle').text()
             });
             // Do something
             break;
