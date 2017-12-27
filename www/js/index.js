@@ -55,7 +55,7 @@ function onDeviceReady() {
 
 function initiateMusicControls() {
     console.log('inside initiate music controls');
-    const nowPlaying1 = document.getElementById('songTitle').innerHTML;
+    const nowPlaying1 = 'Testing Track';
     MusicControls.create({
       track       : 'Yugam Radio',		// optional, default : ''
       artist      : nowPlaying1,						// optional, default : ''
@@ -139,7 +139,7 @@ function events(action) {
             break;
     	case 'music-controls-seek-to':
             const seekToInSeconds = JSON.parse(action).position;
-            const nowPlaying = document.getElementById('songTitle').songTitle;
+            const nowPlaying = 'Testing 2';
             console.log('Updating Seeking');
             MusicControls.updateElapsed({
                 //elapsed: seekToInSeconds,
