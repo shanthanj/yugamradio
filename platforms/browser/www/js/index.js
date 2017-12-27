@@ -92,12 +92,22 @@ function initiateMusicControls() {
       notificationIcon: 'notification'
   }, onSuccess, onError);
 
+  MusicControls.destroy(onSuccess, onError);
+
   // Register callback
   MusicControls.subscribe(events);
   // Start listening for events
   // The plugin will run the events function each time an event is fired
   MusicControls.listen();
 
+}
+
+function onSuccess() {
+  console.log('success');
+}
+
+function onError() {
+  console.log('error music controls');
 }
 
 function events(action) {
