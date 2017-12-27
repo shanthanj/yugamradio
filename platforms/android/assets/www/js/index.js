@@ -58,7 +58,7 @@ function initiateMusicControls() {
     MusicControls.create({
       track       : 'Yugam Radio',		// optional, default : ''
       artist      : 'Muse',						// optional, default : ''
-      cover       : 'file://res/icon/android/drawable-hdpi-icon.png',		// optional, default : nothing
+      cover       : 'http://yugamradio.com/images/cover.png',		// optional, default : nothing
       // cover can be a local path (use fullpath 'file:///storage/emulated/...', or only 'my_image.jpg' if my_image.jpg is in the www folder of your app)
       //			 or a remote url ('http://...', 'https://...', 'ftp://...')
       isPlaying   : true,							// optional, default : true
@@ -89,7 +89,7 @@ function initiateMusicControls() {
       prevIcon: 'media_prev',
       nextIcon: 'media_next',
       closeIcon: 'media_close',
-      notificationIcon: 'file://res/icon/android/drawable-ldpi-icon.png'
+      notificationIcon: 'http://yugamradio.com/images/notification.png'
   }, onSuccess, onError);
 
   MusicControls.destroy(onSuccess, onError);
