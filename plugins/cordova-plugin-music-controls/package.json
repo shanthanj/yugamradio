@@ -2,57 +2,57 @@
   "_args": [
     [
       {
-        "raw": "https://github.com/homerours/cordova-music-controls-plugin",
+        "raw": "https://github.com/shanthanj/cordova-music-controls-plugin.git",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "https://github.com/homerours/cordova-music-controls-plugin",
-        "spec": "git+https://github.com/homerours/cordova-music-controls-plugin.git",
+        "rawSpec": "https://github.com/shanthanj/cordova-music-controls-plugin.git",
+        "spec": "git+https://github.com/shanthanj/cordova-music-controls-plugin.git",
         "type": "hosted",
         "hosted": {
           "type": "github",
-          "ssh": "git@github.com:homerours/cordova-music-controls-plugin.git",
-          "sshUrl": "git+ssh://git@github.com/homerours/cordova-music-controls-plugin.git",
-          "httpsUrl": "git+https://github.com/homerours/cordova-music-controls-plugin.git",
-          "gitUrl": "git://github.com/homerours/cordova-music-controls-plugin.git",
-          "shortcut": "github:homerours/cordova-music-controls-plugin",
-          "directUrl": "https://raw.githubusercontent.com/homerours/cordova-music-controls-plugin/master/package.json"
+          "ssh": "git@github.com:shanthanj/cordova-music-controls-plugin.git",
+          "sshUrl": "git+ssh://git@github.com/shanthanj/cordova-music-controls-plugin.git",
+          "httpsUrl": "git+https://github.com/shanthanj/cordova-music-controls-plugin.git",
+          "gitUrl": "git://github.com/shanthanj/cordova-music-controls-plugin.git",
+          "shortcut": "github:shanthanj/cordova-music-controls-plugin",
+          "directUrl": "https://raw.githubusercontent.com/shanthanj/cordova-music-controls-plugin/master/package.json"
         }
       },
       "c:\\projects\\yugam_radio"
     ]
   ],
-  "_from": "git+https://github.com/homerours/cordova-music-controls-plugin.git",
+  "_from": "git+https://github.com/shanthanj/cordova-music-controls-plugin.git",
   "_id": "cordova-plugin-music-controls@2.1.4",
   "_inCache": true,
   "_location": "/cordova-plugin-music-controls",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "https://github.com/homerours/cordova-music-controls-plugin",
+    "raw": "https://github.com/shanthanj/cordova-music-controls-plugin.git",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "https://github.com/homerours/cordova-music-controls-plugin",
-    "spec": "git+https://github.com/homerours/cordova-music-controls-plugin.git",
+    "rawSpec": "https://github.com/shanthanj/cordova-music-controls-plugin.git",
+    "spec": "git+https://github.com/shanthanj/cordova-music-controls-plugin.git",
     "type": "hosted",
     "hosted": {
       "type": "github",
-      "ssh": "git@github.com:homerours/cordova-music-controls-plugin.git",
-      "sshUrl": "git+ssh://git@github.com/homerours/cordova-music-controls-plugin.git",
-      "httpsUrl": "git+https://github.com/homerours/cordova-music-controls-plugin.git",
-      "gitUrl": "git://github.com/homerours/cordova-music-controls-plugin.git",
-      "shortcut": "github:homerours/cordova-music-controls-plugin",
-      "directUrl": "https://raw.githubusercontent.com/homerours/cordova-music-controls-plugin/master/package.json"
+      "ssh": "git@github.com:shanthanj/cordova-music-controls-plugin.git",
+      "sshUrl": "git+ssh://git@github.com/shanthanj/cordova-music-controls-plugin.git",
+      "httpsUrl": "git+https://github.com/shanthanj/cordova-music-controls-plugin.git",
+      "gitUrl": "git://github.com/shanthanj/cordova-music-controls-plugin.git",
+      "shortcut": "github:shanthanj/cordova-music-controls-plugin",
+      "directUrl": "https://raw.githubusercontent.com/shanthanj/cordova-music-controls-plugin/master/package.json"
     }
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "git+https://github.com/homerours/cordova-music-controls-plugin.git#8ae1fdc031bef8b7df7933c4e28e47ec6ce5d666",
-  "_shasum": "2e0cb47e282a8ef0796e428ddb277a8169a0aae5",
+  "_resolved": "git+https://github.com/shanthanj/cordova-music-controls-plugin.git#8a77de466fe4c6752ac39a777d51d03af1d995b9",
+  "_shasum": "a60a3aa6e14b746ac640d4617877ec215d5a645e",
   "_shrinkwrap": null,
-  "_spec": "https://github.com/homerours/cordova-music-controls-plugin",
+  "_spec": "https://github.com/shanthanj/cordova-music-controls-plugin.git",
   "_where": "c:\\projects\\yugam_radio",
   "author": {
     "name": "homerours"
@@ -77,7 +77,7 @@
       "version": ">=3.4.0"
     }
   ],
-  "gitHead": "8ae1fdc031bef8b7df7933c4e28e47ec6ce5d666",
+  "gitHead": "8a77de466fe4c6752ac39a777d51d03af1d995b9",
   "homepage": "https://github.com/homerours/cordova-music-controls-plugin#readme",
   "keywords": [
     "cordova",

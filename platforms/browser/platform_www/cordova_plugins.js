@@ -433,14 +433,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/cordova-plugin-music-controls/www/MusicControls.js",
-        "id": "cordova-plugin-music-controls.MusicControls",
-        "pluginId": "cordova-plugin-music-controls",
-        "clobbers": [
-            "MusicControls"
-        ]
-    },
-    {
         "file": "plugins/cordova-plugin-contacts/www/contacts.js",
         "id": "cordova-plugin-contacts.contacts",
         "pluginId": "cordova-plugin-contacts",
@@ -729,6 +721,14 @@ module.exports = [
         "merges": [
             ""
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-music-controls/www/MusicControls.js",
+        "id": "cordova-plugin-music-controls.MusicControls",
+        "pluginId": "cordova-plugin-music-controls",
+        "clobbers": [
+            "MusicControls"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -748,7 +748,6 @@ module.exports.metadata =
     "cordova-plugin-vibration": "2.1.6",
     "cordova-plugin-app-event": "1.2.1",
     "cordova-plugin-local-notification": "0.8.4",
-    "cordova-plugin-music-controls": "2.1.4",
     "cordova-plugin-console": "1.0.7",
     "cordova-plugin-contacts": "2.0.1",
     "cordova-plugin-device-motion": "1.2.5",
@@ -758,7 +757,8 @@ module.exports.metadata =
     "cordova-plugin-splashscreen": "3.2.2",
     "cordova-plugin-statusbar": "2.1.3",
     "cordova-plugin-whitelist": "1.2.2",
-    "cordova-plugin-app-preferences": "0.99.3"
+    "cordova-plugin-app-preferences": "0.99.3",
+    "cordova-plugin-music-controls": "2.1.4"
 }
 // BOTTOM OF METADATA
 });

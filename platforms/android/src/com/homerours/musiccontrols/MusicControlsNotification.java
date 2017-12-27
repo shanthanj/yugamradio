@@ -167,9 +167,11 @@ public class MusicControlsNotification {
 
 		if(usePlayingIcon){
 			if (infos.isPlaying){
-				builder.setSmallIcon(this.getResourceId(infos.playIcon, android.R.drawable.ic_media_play));
+				//builder.setSmallIcon(this.getResourceId(infos.playIcon, android.R.drawable.ic_media_play));
+				builder.setSmallIcon(context.getResources().getIdentifier("appIcon", "drawable", context.getPackageName()));
 			} else {
-				builder.setSmallIcon(this.getResourceId(infos.pauseIcon, android.R.drawable.ic_media_pause));
+				//builder.setSmallIcon(this.getResourceId(infos.pauseIcon, android.R.drawable.ic_media_pause));
+				builder.setSmallIcon(context.getResources().getIdentifier("appIcon", "drawable", context.getPackageName()));
 			}
 		}
 

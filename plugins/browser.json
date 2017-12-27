@@ -1,88 +1,88 @@
 {
-    "prepare_queue": {
-        "installed": [],
-        "uninstalled": []
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-battery-status": {
+      "PACKAGE_NAME": "com.yugam.radio"
     },
-    "config_munge": {
-        "files": {}
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.yugam.radio"
     },
-    "installed_plugins": {
-        "cordova-plugin-battery-status": {
-            "PACKAGE_NAME": "com.yugam.radio"
-        },
-        "cordova-plugin-camera": {
-            "PACKAGE_NAME": "com.yugam.radio"
-        },
-        "cordova-plugin-device": {
-            "PACKAGE_NAME": "com.yugam.radio"
-        },
-        "cordova-plugin-dialogs": {
-            "PACKAGE_NAME": "com.yugam.radio"
-        },
-        "cordova-plugin-geolocation": {
-            "PACKAGE_NAME": "com.yugam.radio"
-        },
-        "cordova-plugin-globalization": {
-            "PACKAGE_NAME": "com.yugam.radio"
-        },
-        "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "com.yugam.radio"
-        },
-        "cordova-plugin-media-capture": {
-            "PACKAGE_NAME": "com.yugam.radio"
-        },
-        "cordova-plugin-network-information": {
-            "PACKAGE_NAME": "com.yugam.radio"
-        },
-        "cordova-plugin-vibration": {
-            "PACKAGE_NAME": "com.yugam.radio"
-        },
-        "cordova-plugin-local-notification": {
-            "PACKAGE_NAME": "com.yugam.radio"
-        },
-        "cordova-plugin-music-controls": {
-            "PACKAGE_NAME": "com.yugam.radio"
-        },
-        "cordova-plugin-console": {
-            "PACKAGE_NAME": "com.yugam.radio"
-        },
-        "cordova-plugin-contacts": {
-            "PACKAGE_NAME": "com.yugam.radio"
-        },
-        "cordova-plugin-device-motion": {
-            "PACKAGE_NAME": "com.yugam.radio"
-        },
-        "cordova-plugin-device-orientation": {
-            "PACKAGE_NAME": "com.yugam.radio"
-        },
-        "cordova-plugin-file-transfer": {
-            "PACKAGE_NAME": "com.yugam.radio"
-        },
-        "cordova-plugin-media": {
-            "PACKAGE_NAME": "com.yugam.radio"
-        },
-        "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "com.yugam.radio"
-        },
-        "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "com.yugam.radio"
-        },
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.yugam.radio"
-        },
-        "cordova-plugin-app-preferences": {
-            "PACKAGE_NAME": "com.yugam.radio"
-        }
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.yugam.radio"
     },
-    "dependent_plugins": {
-        "cordova-plugin-compat": {
-            "PACKAGE_NAME": "com.yugam.radio"
-        },
-        "cordova-plugin-file": {
-            "PACKAGE_NAME": "com.yugam.radio"
-        },
-        "cordova-plugin-app-event": {
-            "PACKAGE_NAME": "com.yugam.radio"
-        }
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "com.yugam.radio"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.yugam.radio"
+    },
+    "cordova-plugin-globalization": {
+      "PACKAGE_NAME": "com.yugam.radio"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.yugam.radio"
+    },
+    "cordova-plugin-media-capture": {
+      "PACKAGE_NAME": "com.yugam.radio"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "com.yugam.radio"
+    },
+    "cordova-plugin-vibration": {
+      "PACKAGE_NAME": "com.yugam.radio"
+    },
+    "cordova-plugin-local-notification": {
+      "PACKAGE_NAME": "com.yugam.radio"
+    },
+    "cordova-plugin-console": {
+      "PACKAGE_NAME": "com.yugam.radio"
+    },
+    "cordova-plugin-contacts": {
+      "PACKAGE_NAME": "com.yugam.radio"
+    },
+    "cordova-plugin-device-motion": {
+      "PACKAGE_NAME": "com.yugam.radio"
+    },
+    "cordova-plugin-device-orientation": {
+      "PACKAGE_NAME": "com.yugam.radio"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "com.yugam.radio"
+    },
+    "cordova-plugin-media": {
+      "PACKAGE_NAME": "com.yugam.radio"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.yugam.radio"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.yugam.radio"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.yugam.radio"
+    },
+    "cordova-plugin-app-preferences": {
+      "PACKAGE_NAME": "com.yugam.radio"
+    },
+    "cordova-plugin-music-controls": {
+      "PACKAGE_NAME": "com.yugam.radio"
     }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-compat": {
+      "PACKAGE_NAME": "com.yugam.radio"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.yugam.radio"
+    },
+    "cordova-plugin-app-event": {
+      "PACKAGE_NAME": "com.yugam.radio"
+    }
+  }
 }
