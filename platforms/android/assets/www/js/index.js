@@ -49,14 +49,14 @@ function onDeviceReady() {
   getStreamStats();
   html5audio.play();
   //initPushNotification();
-  initiateMusicControls($('songTitle').text());
+  initiateMusicControls();
 	return false;
 }
 
-function initiateMusicControls(songTitle) {
+function initiateMusicControls() {
     MusicControls.create({
       track       : 'Yugam Radio',		// optional, default : ''
-      artist      : songTitle,						// optional, default : ''
+      artist      : 'Tamil Hits 24x7',						// optional, default : ''
       cover       : 'http://yugamradio.com/images/cover.png',		// optional, default : nothing
       // cover can be a local path (use fullpath 'file:///storage/emulated/...', or only 'my_image.jpg' if my_image.jpg is in the www folder of your app)
       //			 or a remote url ('http://...', 'https://...', 'ftp://...')
