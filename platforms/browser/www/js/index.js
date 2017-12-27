@@ -46,10 +46,10 @@ document.addEventListener('init', function(event) {
 });
 
 function onDeviceReady() {
+  getStreamStats();
   html5audio.play();
   //initPushNotification();
   initiateMusicControls();
-	getStreamStats();
 	return false;
 }
 
