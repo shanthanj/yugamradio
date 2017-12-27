@@ -55,9 +55,10 @@ function onDeviceReady() {
 
 function initiateMusicControls() {
     console.log('inside initiate music controls');
+    const nowPlaying1 = document.getElementById('songTitle').innerHTML;
     MusicControls.create({
       track       : 'Yugam Radio',		// optional, default : ''
-      artist      : $('#songTitle').text(),						// optional, default : ''
+      artist      : nowPlaying1,						// optional, default : ''
       cover       : 'http://yugamradio.com/images/cover.png',		// optional, default : nothing
       // cover can be a local path (use fullpath 'file:///storage/emulated/...', or only 'my_image.jpg' if my_image.jpg is in the www folder of your app)
       //			 or a remote url ('http://...', 'https://...', 'ftp://...')
@@ -138,10 +139,12 @@ function events(action) {
             break;
     	case 'music-controls-seek-to':
             const seekToInSeconds = JSON.parse(action).position;
+            const nowPlaying = document.getElementById('songTitle').songTitle;
+            console.log('Updating Seeking');
             MusicControls.updateElapsed({
                 //elapsed: seekToInSeconds,
                 isPlaying: true,
-                artist: $('#songTitle').text()
+                artist: nowPlaying
             });
             // Do something
             break;
