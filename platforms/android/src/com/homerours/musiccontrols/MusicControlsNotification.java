@@ -43,7 +43,7 @@ public class MusicControlsNotification {
 
 	// Show or update notification
 	public void updateNotification(MusicControlsInfos newInfos){
-		// Check if the cover has changed	
+		// Check if the cover has changed
 		if (!newInfos.cover.isEmpty() && (this.infos == null || !newInfos.cover.equals(this.infos.cover))){
 			this.getBitmapCover(newInfos.cover);
 		}
@@ -168,10 +168,10 @@ public class MusicControlsNotification {
 		if(usePlayingIcon){
 			if (infos.isPlaying){
 				//builder.setSmallIcon(this.getResourceId(infos.playIcon, android.R.drawable.ic_media_play));
-				builder.setSmallIcon(context.getResources().getIdentifier("appIcon", "drawable", context.getPackageName()));
+				builder.setSmallIcon(context.getResources().getIdentifier("appicon", "drawable", context.getPackageName()));
 			} else {
 				//builder.setSmallIcon(this.getResourceId(infos.pauseIcon, android.R.drawable.ic_media_pause));
-				builder.setSmallIcon(context.getResources().getIdentifier("appIcon", "drawable", context.getPackageName()));
+				builder.setSmallIcon(context.getResources().getIdentifier("appicon", "drawable", context.getPackageName()));
 			}
 		}
 
@@ -253,4 +253,3 @@ public class MusicControlsNotification {
 		this.notificationManager.cancel(this.notificationID);
 	}
 }
-

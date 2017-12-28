@@ -46,11 +46,18 @@ document.addEventListener('init', function(event) {
 });
 
 function onDeviceReady() {
+  setupStatusBar();
   getStreamStats();
   html5audio.play();
   //initPushNotification();
   initiateMusicControls();
 	return false;
+}
+
+function setupStatusBar() {
+  if (cordova.platformId == 'android') {
+    StatusBar.backgroundColorByHexString("#333");
+  }
 }
 
 function initiateMusicControls() {
