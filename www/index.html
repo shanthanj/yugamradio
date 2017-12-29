@@ -24,6 +24,7 @@
   <script type="text/javascript" src="cordova.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
   <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+  <link rel="stylesheet" href="css/onsen-css-components.min.css">
   <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
   <script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
   <script src="js/jquery.rss.js"></script>
@@ -79,7 +80,7 @@
 
     <template id="tabbar.html">
       <ons-page id="tabbar-page">
-        <ons-toolbar>
+        <ons-toolbar >
           <div id="toolbarLabel" class="center">Yugam Radio</div>
           <div class="left">
             <ons-toolbar-button onclick="fn.toggleMenu()">
@@ -87,10 +88,10 @@
             </ons-toolbar-button>
           </div>
         </ons-toolbar>
-        <ons-tabbar swipeable id="appTabbar" position="auto">
+        <ons-tabbar modifier="material" swipeable id="appTabbar" position="auto">
           <ons-tab label="Home" icon="ion-home" page="home.html" active></ons-tab>
-          <ons-tab label="Shows" icon="ion-edit" page="shows.html"></ons-tab>
-          <ons-tab label="News" icon="ion-film-marker" page="news.html"></ons-tab>
+          <ons-tab label="Shows" icon="ion-film-marker" page="shows.html"></ons-tab>
+          <ons-tab label="News" icon="ion-ios-world" page="news.html"></ons-tab>
         </ons-tabbar>
 
 
