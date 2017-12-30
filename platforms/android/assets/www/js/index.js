@@ -4,7 +4,7 @@ var progressTimer;
 var playButton;
 var stopButton;
 var activityIndicator;
-var textPosition;
+//var textPosition;
 var shoutcastURL = "http://yugam.dynu.net:8080/";
 
 document.addEventListener("prechange", function(event) {
@@ -26,15 +26,15 @@ document.addEventListener('init', function(event) {
   playButton = document.getElementById('playbutton');
   stopButton = document.getElementById('stopbutton');
   activityIndicator = document.getElementById('activityindicator');
-  textPosition = document.getElementById('textposition');
+//  textPosition = document.getElementById('textposition');
 
   var page = event.target;
 
   if (page.id === 'home') {
-    page.querySelector('#push-button').onclick = function() {
+    /*page.querySelector('#push-button').onclick = function() {
       document.querySelector('#myNavigator').pushPage('shows.html', {data: {title: 'Shows'}});
-    };
-  } else if (page.id === 'shows') {
+    };*/
+  } else if (page.id === 'news') {
     jQuery(function($) {
           $("#rss-feeds").rss("http://www.adaderana.lk/rss.php",
           {
@@ -45,18 +45,28 @@ document.addEventListener('init', function(event) {
   }
 });
 
+function setupVolumeSlider() {
+  document.getElementById('range-slider').addEventListener('input', function (event) {
+    var volumeLevel = event.target.value;
+    myaudio.volume = volumeLevel/100;
+    document.getElementById('volume-value').innerHTML = volumeLevel;
+  });
+}
+
+
 function onDeviceReady() {
   setupStatusBar();
   getStreamStats();
   html5audio.play();
   //initPushNotification();
   initiateMusicControls();
+//  setupVolumeSlider();
 	return false;
 }
 
 function setupStatusBar() {
   if (cordova.platformId == 'android') {
-    StatusBar.backgroundColorByHexString("#df3155");
+    StatusBar.backgroundColorByHexString("#e0244a");
   }
 }
 
@@ -189,8 +199,8 @@ function getStreamStats() {
 						var songAndArtist = data.streams[0].songtitle;
 						var song = songAndArtist.split(" - ")[1];
 						var artist = songAndArtist.split(" - ")[0];
-            $('#songTitle').text(song);
-						$('#singerInfo').text(artist);
+            $('#songTitle').html('Now Playing: <b>' + song + '</b>');
+						$('#singerInfo').html('(' + artist + ')');
         },
         dataType: "json",
         complete: setTimeout(function() {getStreamStats()}, 10000),
@@ -221,7 +231,7 @@ var isPlaying = false;
 var readyStateInterval = null;
 
 var html5audio = {
-	play: function()
+  play: function()
 	{
 		isPlaying = true;
 		myaudio.play();
@@ -231,7 +241,7 @@ var html5audio = {
 			 if (myaudio.readyState <= 2) {
 				 playButton.style.display = 'none';
 				 activityIndicator.style.display = 'block';
-				 textPosition.innerHTML = 'loading...';
+				 //textPosition.innerHTML = 'loading...';
 			 }
 		},1000);
 		myaudio.addEventListener("timeupdate", function() {
@@ -239,7 +249,7 @@ var html5audio = {
 			 var m = parseInt((myaudio.currentTime / 60) % 60);
 			 var h = parseInt(((myaudio.currentTime / 60) / 60) % 60);
 			 if (isPlaying && myaudio.currentTime > 0) {
-				 textPosition.innerHTML = pad2(h) + ':' + pad2(m) + ':' + pad2(s);
+				// textPosition.innerHTML = pad2(h) + ':' + pad2(m) + ':' + pad2(s);
 			 }
 		}, false);
 		myaudio.addEventListener("error", function() {
@@ -293,7 +303,7 @@ var html5audio = {
 		playButton.style.display = 'block';
 		myaudio = null;
 		myaudio = new Audio(myAudioURL);
-		textPosition.innerHTML = '';
+		//textPosition.innerHTML = '';
 	}
 };
 

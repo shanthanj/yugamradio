@@ -7,17 +7,45 @@
 	<meta charset="utf-8">
 	<style type="text/css">
 
-		#playcontrols {
+    #playcontrols, #songInfoDiv, #singerInfoDiv {
 			text-align: center;
-			margin-top: 50px;
+      color: #e0244a;
+			/*margin-top: 50px;*/
 		}
 		#playcontrols #activityindicator, #playcontrols #stopbutton {
 			display: none;
 		}
 
 		#textpositiondiv {
-			margin-top: 100px;
+			/*margin-top: 100px;*/
 		}
+
+    html,
+    body {
+       margin:0;
+       padding:0;
+       height:100%;
+    }
+    #container {
+       min-height:100%;
+       position:relative;
+    }
+    #header {
+       background:#ff0;
+       padding:10px;
+    }
+    #body {
+       padding:10px;
+       padding-bottom:60px;   /* Height of the footer */
+    }
+    #footer {
+       position:absolute;
+       bottom:0;
+       width:100%;
+       height:160px;   /* Height of the footer */
+       margin-bottom: 20px;
+       /*background:#6cf;*/
+    }
 
 	</style>
 
@@ -43,18 +71,46 @@
     </ons-navigator>
 
     <template id="home.html">
-      <ons-page id="home" title="Yugam Radio">
+      <ons-page id="home" title="Yugam Radio1">
         <!-- Home Page Contents -->
-        <div id="playcontrols">
-    		  <a href="#" id="playbutton" onClick="html5audio.play();return false;"><img src="img/playbutton.png" /></a>
-    		  <a href="#" id="activityindicator" onClick="html5audio.stop();return false;"><img src="img/activityindicator.gif" /></a>
-    		  <a href="#" id="stopbutton" onClick="html5audio.stop();return false;"><img src="img/stopbutton.png" /></a>
-  	    </div>
-        <div id="songInfoDiv">Current Song: <span id="songTitle"></span></div>
-        <div id="singerInfoDiv">Artist: <span id="singerInfo"></span></div>
-    	  <div id="textpositiondiv">Time played: <span id="textposition">stopped</span></div>
-        <!-- End Home Page Contents -->
-        <ons-button id="push-button">Push page</ons-button>
+        <div id="container">
+           <div id="header"></div>
+           <div id="body"></div>
+           <div id="footer">
+             <ons-card>
+               <div id="playcontrols">
+                 <a href="#" id="playbutton" onClick="html5audio.play();return false;"><img src="img/play.png" /></a>
+                 <a href="#" id="activityindicator" onClick="html5audio.stop();return false;"><img src="img/loader.gif" /></a>
+                 <a href="#" id="stopbutton" onClick="html5audio.stop();return false;"><img src="img/stop.png" /></a>
+               </div>
+               <div id="songInfoDiv"><span id="songTitle"></span></div>
+               <div id="singerInfoDiv"><span id="singerInfo"></span></div>
+              <!-- <div id="textpositiondiv">Time played: <span id="textposition">stopped</span></div> -->
+             </ons-card>
+           </div>
+        </div>
+
+        <!-- End of home page -->
+
+
+
+        <!--
+        Adjust the volume:
+        <ons-row>
+          <ons-col width="40px" style="text-align: center; line-height: 31px;">
+            <ons-icon icon="md-volume-down"></ons-icon>
+          </ons-col>
+          <ons-col>
+            <ons-range id="range-slider" value="25" style="width: 100%;"></ons-range>
+          </ons-col>
+          <ons-col width="40px" style="text-align: center; line-height: 31px;">
+            <ons-icon icon="md-volume-up"></ons-icon>
+          </ons-col>
+        </ons-row>
+        Volume:<span id="volume-value">&nbsp;25</span> <span id="careful-message" style="display: none">&nbsp;(careful, that's loud)</span>
+      -->
+        <!-- End Home Page Contents
+        <ons-button id="push-button">Push page</ons-button> -->
       </ons-page>
     </template>
 
@@ -63,7 +119,7 @@
         <ons-toolbar>
           <div class="center">Yugam Radio Schedule</div>
         </ons-toolbar>
-        <ons-list id="rss-feeds">
+        <ons-list id="schedule">
           <ons-list-header>Default</ons-list-header>
           <ons-list-item>Item A</ons-list-item>
           <ons-list-item>Item B</ons-list-item>
@@ -74,7 +130,13 @@
 
     <template id="news.html">
       <ons-page id="news">
-        <p>This is the news page.</p>
+        <ons-toolbar>
+          <div class="center">Yugam Radio News</div>
+        </ons-toolbar>
+        <ons-list id="rss-feeds">
+
+
+        </ons-list>
       </ons-page>
     </template>
 
