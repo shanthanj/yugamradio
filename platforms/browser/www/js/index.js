@@ -199,8 +199,8 @@ function getStreamStats() {
 						var songAndArtist = data.streams[0].songtitle;
 						var song = songAndArtist.split(" - ")[1];
 						var artist = songAndArtist.split(" - ")[0];
-            $('#songTitle').html('Now Playing: <b>' + song + '</b>');
-						$('#singerInfo').html('(' + artist + ')');
+            $('#songTitle').html('Now Playing: <b>' + song + '</b><br/>' + artist);
+						//$('#singerInfo').html('(' + artist + ')');
         },
         dataType: "json",
         complete: setTimeout(function() {getStreamStats()}, 10000),

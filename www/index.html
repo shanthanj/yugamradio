@@ -7,6 +7,10 @@
 	<meta charset="utf-8">
 	<style type="text/css">
 
+    ons-fab span{
+      text-align: center;
+    }
+
     #playcontrols, #songInfoDiv, #singerInfoDiv {
 			text-align: center;
       color: #e0244a;
@@ -36,14 +40,14 @@
     }
     #body {
        padding:10px;
-       padding-bottom:60px;   /* Height of the footer */
+       padding-bottom:40px;   /* Height of the footer */
     }
     #footer {
        position:absolute;
        bottom:0;
        width:100%;
-       height:160px;   /* Height of the footer */
-       
+       height:100px;   /* Height of the footer */
+
     }
 
 	</style>
@@ -77,13 +81,24 @@
            <div id="body"></div>
            <div id="footer">
              <ons-card>
-               <div id="playcontrols">
-                 <a href="#" id="playbutton" onClick="html5audio.play();return false;"><img src="img/play.png" /></a>
+               <div id="playcontrols" style="width: 100%; overflow: hidden">
+                 <div style="float: left;">
+                 <ons-fab id="playbutton" position="middle">
+                  <ons-icon icon="ion-play" onClick="html5audio.play();return false;"></ons-icon>
+                 </ons-fab>
                  <a href="#" id="activityindicator" onClick="html5audio.stop();return false;"><img src="img/loader.gif" /></a>
-                 <a href="#" id="stopbutton" onClick="html5audio.stop();return false;"><img src="img/stop.png" /></a>
+                 <ons-fab id="stopbutton" position="middle">
+                  <ons-icon icon="ion-stop" onClick="html5audio.stop();return false;"></ons-icon>
+                </ons-fab>
+                </div>
+                <!-- <a href="#" id="playbutton" onClick="html5audio.play();return false;"><img src="img/play.png" /></a>
+                  <a href="#" id="stopbutton" onClick="html5audio.stop();return false;"><img src="img/stop.png" /></a> -->
+                  <div style="float: right; display: block">
+                    <div id="songInfoDiv" style="text-align: left; margin-top: 10px;"><span id="songTitle" style="text-align: left"></span></div>
+                  <!--  <div id="singerInfoDiv"><span id="singerInfo"></span></div>-->
+                  </div>
                </div>
-               <div id="songInfoDiv"><span id="songTitle"></span></div>
-               <div id="singerInfoDiv"><span id="singerInfo"></span></div>
+
               <!-- <div id="textpositiondiv">Time played: <span id="textposition">stopped</span></div> -->
              </ons-card>
            </div>
