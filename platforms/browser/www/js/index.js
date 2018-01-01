@@ -56,7 +56,7 @@ function setupVolumeSlider() {
 
 function onDeviceReady() {
   setupStatusBar();
-  getStreamStats();
+  //getStreamStats();
   html5audio.play();
   //initPushNotification();
   initiateMusicControls();
@@ -66,7 +66,7 @@ function onDeviceReady() {
 
 function setupStatusBar() {
   if (cordova.platformId == 'android') {
-    StatusBar.backgroundColorByHexString("#e0244a");
+    StatusBar.backgroundColorByHexString("#cc1c40");
   }
 }
 
@@ -119,11 +119,11 @@ function initiateMusicControls() {
 }
 
 function onSuccess() {
-  console.log('success');
+  //console.log('success');
 }
 
 function onError() {
-  console.log('error music controls');
+  //console.log('error music controls');
 }
 
 function events(action) {
@@ -155,7 +155,7 @@ function events(action) {
     	case 'music-controls-seek-to':
             const seekToInSeconds = JSON.parse(action).position;
             const nowPlaying = 'Testing 2';
-            console.log('Updating Seeking');
+            //console.log('Updating Seeking');
             MusicControls.updateElapsed({
                 //elapsed: seekToInSeconds,
                 isPlaying: true,
@@ -187,7 +187,7 @@ function initPushNotification() {
     icon: 'file://img/logo.png',
     foreground: true
 });
-  console.log("Push Notification Initialized");
+  //console.log("Push Notification Initialized");
 }
 
 function getStreamStats() {
@@ -203,7 +203,11 @@ function getStreamStats() {
 						//$('#singerInfo').html('(' + artist + ')');
         },
         dataType: "json",
-        complete: setTimeout(function() {getStreamStats()}, 10000),
+        complete: setTimeout(function() {
+          if (isPlaying) {
+            getStreamStats()
+          }
+        }, 10000),
         timeout: 2000
     });
 }
@@ -212,7 +216,7 @@ function getStreamStats() {
 
 function onError(error)
 {
-	console.log(error.message);
+	//console.log(error.message);
 }
 
 function onConfirmRetry(button) {
@@ -235,7 +239,7 @@ var html5audio = {
 	{
 		isPlaying = true;
 		myaudio.play();
-
+    getStreamStats();
 
 		readyStateInterval = setInterval(function(){
 			 if (myaudio.readyState <= 2) {
@@ -253,10 +257,10 @@ var html5audio = {
 			 }
 		}, false);
 		myaudio.addEventListener("error", function() {
-			 console.log('myaudio ERROR');
+			 //console.log('myaudio ERROR');
 		}, false);
 		myaudio.addEventListener("canplay", function() {
-			 console.log('myaudio CAN PLAY');
+			// console.log('myaudio CAN PLAY');
 		}, false);
 		myaudio.addEventListener("waiting", function() {
 			 //console.log('myaudio WAITING');
@@ -296,7 +300,7 @@ var html5audio = {
 	},
 	stop: function() {
 		isPlaying = false;
-		clearInterval(readyStateInterval);
+    clearInterval(readyStateInterval);
 		myaudio.pause();
 		stopButton.style.display = 'none';
 		activityIndicator.style.display = 'none';
