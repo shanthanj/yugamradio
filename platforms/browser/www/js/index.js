@@ -105,7 +105,7 @@ function initiateMusicControls() {
       prevIcon: 'media_prev',
       nextIcon: 'media_next',
       closeIcon: 'media_close',
-      notificationIcon: ''
+      notificationIcon: 'notification'
   }, onSuccess, onError);
 
   MusicControls.destroy(onSuccess, onError);
