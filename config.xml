@@ -122,5 +122,5 @@
     <plugin name="cordova-plugin-statusbar" spec="~2.1.2" />
     <plugin name="cordova-plugin-whitelist" spec="~1.2.1" />
     <plugin name="cordova-plugin-app-preferences" spec="https://github.com/apla/me.apla.cordova.app-preferences" />
-    <plugin name="cordova-plugin-music-controls" spec="git+https://github.com/shanthanj/cordova-music-controls-plugin.git" />
+    <plugin name="cordova-plugin-music-controls" spec="https://github.com/shanthanj/cordova-music-controls-plugin.git" />
 </widget>
