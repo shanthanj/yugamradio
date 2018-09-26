@@ -5,7 +5,8 @@ var playButton;
 var stopButton;
 var activityIndicator;
 //var textPosition;
-var shoutcastURL = "http://yugam.dynu.net:8080/";
+var shoutcastURL = "http://209.95.56.101:9012/stream";
+var statsURL = "http://209.95.56.101:9012/statistics?json=1";
 
 document.addEventListener("prechange", function(event) {
   if (event.target.matches('#appTabbar')) {
@@ -192,7 +193,7 @@ function initPushNotification() {
 
 function getStreamStats() {
 	$.ajax({
-        url: shoutcastURL + "statistics?json=1",
+        url: statsURL,
         type: "GET",
         success: function(data) {
             //console.log("polling");
