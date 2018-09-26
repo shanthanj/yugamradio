@@ -176,12 +176,58 @@
             </ons-toolbar-button>
           </div>
         </ons-toolbar>
-        <ons-tabbar modifier="material" swipeable id="appTabbar" position="auto">
+        <!--<ons-tabbar modifier="material" swipeable id="appTabbar" position="auto">
           <ons-tab label="Home" icon="ion-home" page="home.html" active></ons-tab>
-         <!-- <ons-tab label="Shows" icon="ion-film-marker" page="shows.html"></ons-tab> 
-          <ons-tab label="News" icon="ion-ios-world" page="news.html"></ons-tab>-->
-        </ons-tabbar>
+          <ons-tab label="Shows" icon="ion-film-marker" page="shows.html"></ons-tab> 
+          <ons-tab label="News" icon="ion-ios-world" page="news.html"></ons-tab>
+        </ons-tabbar>-->
 
+		
+		<ons-page id="home" modifier='transparent' title="Yugam Radio1">
+        <!-- Home Page Contents -->
+        <div id="container">
+           <div id="header"></div>
+           <div id="body" style="color: white; text-align: center">
+				<img src="img/Yugam-Radio.png" width="40%"/>
+				<h4 style="color: white; font-weight: strong">Listen Hit Songs 24x7</h4>
+				<div style="text-align: left; font-size: small; font-family: Palatino Linotype, Book Antiqua, Palatino, serif">
+				<p>
+					Yugam Radio is dedicated to entertain audience with quality music and various shows. We operate from Toronto, Canada and our important mission is to entertain listeners from all around the world.
+				</p>
+				<p>	
+					Apart from providing quality radio shows and music, Yugam brings updated Sri Lanka, India, Canada, World and Sports news to our audience. We also produce audio/video productions that include drama, comedy kits, interviews, cinema, etc.					
+				</p>
+				<p>
+					Visit our Online Portal <a style="color: white" href="http://webyugam.com" target="_blank"><strong>WebYugam</strong></a> for more information
+				</p>
+				</div>
+		   </div>
+           <div id="footer">
+             <ons-card>
+               <div id="playcontrols" style="width: 100%; overflow: hidden">
+                 <div style="float: left;">
+                 <ons-fab id="playbutton" position="middle" style="opacity: 1.0">
+                  <ons-icon icon="ion-play" onClick="html5audio.play();return false;"></ons-icon>
+                 </ons-fab>
+                 <a href="#" id="activityindicator" onClick="html5audio.stop();return false;"><img src="img/loader.gif" /></a>
+                 <ons-fab id="stopbutton" position="middle" style="opacity: 1.0">
+                  <ons-icon icon="ion-stop" onClick="html5audio.stop();return false;"></ons-icon>
+                </ons-fab>
+                </div>
+                <!-- <a href="#" id="playbutton" onClick="html5audio.play();return false;"><img src="img/play.png" /></a>
+                  <a href="#" id="stopbutton" onClick="html5audio.stop();return false;"><img src="img/stop.png" /></a> -->
+                  <div style="float: right; display: block">
+                    <div id="songInfoDiv" style="text-align: left; margin-top: 10px;"><span id="songTitle" style="text-align: left"></span></div>
+                  <!--  <div id="singerInfoDiv"><span id="singerInfo"></span></div>-->
+                  </div>
+               </div>
+
+              <!-- <div id="textpositiondiv">Time played: <span id="textposition">stopped</span></div> -->
+             </ons-card>
+           </div>
+        </div>
+		</ons-page>
+		
 
       </ons-page>
     </template>
