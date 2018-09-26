@@ -11,13 +11,18 @@
       text-align: center;
     }
 		
-#home .page--full_bg__background {
-  background-image: url("http://yugamradio.com/wp-content/uploads/2018/09/radio-bg.jpg"); 
+#home .page__background {
+  background-image: url("http://yugamradio.com/wp-content/uploads/2018/09/radio-bg.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            text-align: center;  
 }
 
     #playcontrols, #songInfoDiv, #singerInfoDiv {
 			text-align: center;
-      color: #e0244a;
+      color: #ee3e27;
 			/*margin-top: 50px;*/
 		}
 		#playcontrols #activityindicator, #playcontrols #stopbutton {
@@ -53,6 +58,10 @@
        height:100px;   /* Height of the footer */
 
     }
+	
+	#footer ons-card {
+		background-color: rgba(0,0,0,0.3);
+	}
 
 	</style>
 
@@ -77,7 +86,7 @@
     </ons-navigator>
 
     <template id="home.html">
-      <ons-page id="home" title="Yugam Radio1">
+      <ons-page id="home" modifier='transparent' title="Yugam Radio1">
         <!-- Home Page Contents -->
         <div id="container">
            <div id="header"></div>
@@ -86,11 +95,11 @@
              <ons-card>
                <div id="playcontrols" style="width: 100%; overflow: hidden">
                  <div style="float: left;">
-                 <ons-fab id="playbutton" position="middle">
+                 <ons-fab id="playbutton" position="middle" style="opacity: 1.0">
                   <ons-icon icon="ion-play" onClick="html5audio.play();return false;"></ons-icon>
                  </ons-fab>
                  <a href="#" id="activityindicator" onClick="html5audio.stop();return false;"><img src="img/loader.gif" /></a>
-                 <ons-fab id="stopbutton" position="middle">
+                 <ons-fab id="stopbutton" position="middle" style="opacity: 1.0">
                   <ons-icon icon="ion-stop" onClick="html5audio.stop();return false;"></ons-icon>
                 </ons-fab>
                 </div>
@@ -130,7 +139,7 @@
         <ons-button id="push-button">Push page</ons-button> -->
       </ons-page>
     </template>
-
+<!--
     <template id="shows.html">
       <ons-page id="shows" title="Shows">
         <ons-toolbar>
@@ -144,7 +153,7 @@
         </ons-list>
       </ons-page>
     </template>
-
+-->
     <template id="news.html">
       <ons-page id="news">
         <ons-toolbar>
@@ -169,8 +178,8 @@
         </ons-toolbar>
         <ons-tabbar modifier="material" swipeable id="appTabbar" position="auto">
           <ons-tab label="Home" icon="ion-home" page="home.html" active></ons-tab>
-          <ons-tab label="Shows" icon="ion-film-marker" page="shows.html"></ons-tab>
-          <ons-tab label="News" icon="ion-ios-world" page="news.html"></ons-tab>
+         <!-- <ons-tab label="Shows" icon="ion-film-marker" page="shows.html"></ons-tab> 
+          <ons-tab label="News" icon="ion-ios-world" page="news.html"></ons-tab>-->
         </ons-tabbar>
 
 
@@ -183,8 +192,8 @@
         <ons-list-item onclick="fn.load('home.html')" tappable>
           Home
         </ons-list-item>
-        <ons-list-item onclick="fn.load('settings.html')" tappable>
-          Settings
+        <ons-list-item onclick="window.open('http://webyugam.com')" tappable>
+          News
         </ons-list-item>
         <ons-list-item onclick="fn.load('about.html')" tappable>
           About
