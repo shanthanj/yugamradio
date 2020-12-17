@@ -5,7 +5,7 @@ var playButton;
 var stopButton;
 var activityIndicator;
 //var textPosition;
-var shoutcastURL = "http://209.95.56.101:9012/stream";
+var shoutcastURL = "https://s6.yesstreaming.net:19012/stream";
 var statsURL = "http://209.95.56.101:9012/statistics?json=1";
 
 document.addEventListener("prechange", function(event) {
